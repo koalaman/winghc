@@ -1,0 +1,5 @@
+#!/bin/sh
+# cuib: Cabal Update Install Build
+cabal update &&
+cabal install --dependencies-only &&
+cabal build "$@"
