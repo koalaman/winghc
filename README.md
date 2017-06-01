@@ -1,7 +1,7 @@
-# winghc -- Docker image for building Haskell Windows executables
+# winghc -- Docker image with Wine + Windows Haskell Platform
 
 This docker image aims to be a convenient way of compiling Haskell
-for Windows while running Linux.
+for Windows, while still running Linux.
 
 ## To run:
 
@@ -18,7 +18,7 @@ building a [shellcheck.exe](https://github.com/koalaman/shellcheck):
 
     git clone https://github.com/koalaman/shellcheck
     docker pull koalaman/winghc
-    cd shellcheck && docker run -v "$PWD:/appdata" cuib
+    cd shellcheck && docker run -v "$PWD:/appdata" koalaman/winghc cuib
 
 This should result in a `shellcheck.exe` somewhere in `dist/`.
 
