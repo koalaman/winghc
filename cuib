@@ -1,5 +1,6 @@
 #!/bin/sh
 # cuib: Cabal Update Install Build
+set -x
 cabal update &&
 cabal install --dependencies-only &&
 cabal build "$@"

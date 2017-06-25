@@ -12,9 +12,6 @@ RUN adduser haskell
 RUN mkdir /appdata
 RUN chown haskell: /appdata
 
-# Convenience scripts for running commands
-COPY cabal ghc cuib /usr/bin/
-
 # Install the Haskell Platform
 USER haskell
 WORKDIR /home/haskell
@@ -23,8 +20,17 @@ RUN wine setup.exe /S
 RUN rm setup.exe
 RUN rm -r "$HOME/.wine/drive_c/users/haskell/Application Data"
 RUN ln -s "/appdata" "$HOME/.wine/drive_c/users/haskell/Application Data"
+# Allow winewrap to kludge the home dir
+RUN chmod -R o+w "$HOME/.wine/drive_c/users/"
 
+# Convenience scripts for running commands
+USER root
+COPY winewrap cabal ghc cuib /usr/bin/
+
+# Tweaks to the environment to allow running as any user
 USER haskell
 ENV WINEPATH C:/Program Files/Haskell Platform/8.0.2-a/bin;C:/Program Files/Haskell Platform/8.0.2-a/lib/Extralibs/bin
+ENV HOME /home/haskell
 WORKDIR /appdata
+ENTRYPOINT ["/usr/bin/winewrap"]
 
