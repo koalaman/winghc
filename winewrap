@@ -1,0 +1,10 @@
+#!/bin/bash
+# winewrap: Set up WINEPREFIX for the current user
+
+export WINEPREFIX=/tmp/.wine
+mkdir "$WINEPREFIX"
+ln -s "/home/haskell/.wine"/* "$WINEPREFIX"
+user=$(whoami 2> /dev/null || id -u)
+ln -s "haskell" "$WINEPREFIX/drive_c/users/$user"
+wine wineboot > /tmp/winelog 2>&1
+exec "$@"
