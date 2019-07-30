@@ -3,4 +3,5 @@
 set -x
 cabal update &&
 cabal install --dependencies-only &&
-cabal build "$@"
+cabal build "$@" &&
+find dist -iname '*.exe' -exec wine strip -x {} \;

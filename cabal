@@ -1,2 +1,2 @@
 #!/bin/sh
-exec wine cabal "$@"
+exec wine cabal --http-transport=plain-http "$@"
