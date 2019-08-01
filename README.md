@@ -5,7 +5,6 @@ for Windows, while still running Linux.
 
 ## To run:
 
-    docker pull koalaman/winghc
     docker run -v "$PWD:/appdata" koalaman/winghc cabal yourcommand
 
 All of cabal and ghc's temp files will be stored in /appdata,
@@ -17,7 +16,6 @@ build, there's a convenience script `cuib`. Here's an example of
 building a [shellcheck.exe](https://github.com/koalaman/shellcheck):
 
     git clone https://github.com/koalaman/shellcheck
-    docker pull koalaman/winghc
     cd shellcheck && docker run -v "$PWD:/appdata" koalaman/winghc cuib
 
 This should result in a `shellcheck.exe` somewhere in `dist/`.
