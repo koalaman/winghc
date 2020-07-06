@@ -5,6 +5,6 @@ extra-prog-path: C:\users\haskell\Application Data\cabal\bin
 build-summary: C:\users\haskell\Application Data\cabal\logs\build.log
 
 program-default-options
-  gcc-options: -Os -Wl,--gc-sections -Wa,-mbig-obj -ffunction-sections -fdata-sections
-  ghc-options: -optc-Os -optlo-Os -split-sections -optlc-function-sections -optc-Wl,--gc-sections -optc-Wa,-mbig-obj -v
+  gcc-options: -Os -Wl,--gc-sections -Wa,-mbig-obj -fdata-sections
+  ghc-options: -optc-Os -optlo-Os -optlc-function-sections -optc-Wl,--gc-sections -optc-Wa,-mbig-obj
 
